@@ -109,6 +109,7 @@ class Task extends dbconnection
 
 
         if (isset($picture["name"]) && trim($picture["name"] && $picture['size'] > 0 && $picture['error'] == 0) != ''){
+            if(!is_dir("images")) mkdir("images") ;
             $path_parts = pathinfo($picture["name"]);
             $ext = $path_parts["extension"];
             $pic = "images/" . $id . "." . $ext;
