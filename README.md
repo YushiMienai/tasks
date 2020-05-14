@@ -16,4 +16,17 @@
 
 В приложении нужно с помощью чистого PHP реализовать модель MVC. Фреймворки PHP использовать нельзя, библиотеки - можно. Верстка на bootstrap. К дизайну особых требований нет, должно выглядеть аккуратно.
 
-Реализацию можно посмотреть [по ссылке](http://yushimienai.ru/task/)
+Реализацию можно посмотреть [по ссылке](http://yushimienai.ru/task/view.php)
+
+Таблица:
+CREATE TABLE `task` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `text` text NOT NULL,
+  `pic` varchar(255) NOT NULL,
+  `done` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+ALTER TABLE `task`
+  ADD PRIMARY KEY (`id`);
