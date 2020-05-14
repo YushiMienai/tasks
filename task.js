@@ -1,3 +1,6 @@
+let sort = "username";
+let order = "desc";
+
 $(document).ready(function(){
     showAll(0);
 });
@@ -36,6 +39,7 @@ $("#login form").submit(function(){
         }
     })
 });
+
 function logout() {
     $.post("/task/logout", {}, function (data) {
         if (data == '1') {
@@ -102,18 +106,7 @@ $("#task_div form").submit(function() {
         processData: false,
         contentType: false,
         success: function (data) {
-            let id = parseInt(data.trim());
-            $.post("/task/showOne", {id:id}, function(task){
-                let params = JSON.parse(task);
-
-                if(id > 0) {
-                    $("#card_" + id + " img").attr('src', params[0][4]);
-                    $("#card_" + id + " .card-title").html( params[0][1] + " (" + params[0][2] + ")");
-                    $("#card_" + id + " .card-text").html( params[0][3]);
-                }
-                else renderCard(params[0],params['admin']);
-                $(".close").click();
-            })
+            showAll(0, sort, order);
         },
         error: function(data){
             console.log(data);
@@ -164,8 +157,8 @@ function showAll(page, sort = 'username', order = 'ask'){
 }
 
 $(".sortbtn").click(function(){
-    let sort = this.dataset.sort;
-    let order = this.dataset.order;
+    sort = this.dataset.sort;
+    order = this.dataset.order;
     showAll(0, sort, order);
     if (order == 'asc') this.dataset.order = 'desc'
     else this.dataset.order = 'asc';
