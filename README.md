@@ -19,6 +19,7 @@
 Реализацию можно посмотреть [по ссылке](http://yushimienai.ru/task/view.php)
 
 Таблица:
+```sql
 CREATE TABLE `task` (
   `id` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
@@ -30,3 +31,4 @@ CREATE TABLE `task` (
 
 ALTER TABLE `task`
   ADD PRIMARY KEY (`id`);
+```
